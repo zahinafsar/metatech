@@ -1,0 +1,39 @@
+{
+  "name": "metatech",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "lib/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "npm run dev --workspace metatech-client",
+    "dev:server": "npm run dev --workspace metatech-server",
+    "build": "npm run build --workspaces --if-present",
+    "start": "npm run start --workspace metatech-server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.2",
+    "concurrently": "^10.0.4",
+    "cz-git": "^1.13.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "typescript": "~6.0.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs,cjs,json,css,md,html,yaml,yml}": "oxfmt"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-git"
+    }
+  }
+}
