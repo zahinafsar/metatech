@@ -9,19 +9,26 @@ function PlayButton({
   type = 'button',
   ...props
 }: React.ComponentProps<'button'> & { label?: string }) {
+  const [isPressed, setIsPressed] = React.useState(false);
+
   return (
     <button
       data-slot="play-button"
+      data-pressed={isPressed}
       type={type}
       aria-label={label}
       title={label}
+      onPointerDown={() => setIsPressed(true)}
+      onPointerUp={() => setIsPressed(false)}
+      onPointerLeave={() => setIsPressed(false)}
+      onPointerCancel={() => setIsPressed(false)}
       className={cn(
-        'flex aspect-square w-[130px] items-center justify-center rounded-full bg-brand-green/25 outline-none transition-colors hover:bg-brand-green/35 focus-visible:ring-[3px] focus-visible:ring-ring/50',
+        'group relative flex aspect-square w-[130px] items-center justify-center rounded-full bg-brand-green/25 outline-none transition duration-200 hover:scale-105 hover:bg-brand-green/35 data-[pressed=true]:scale-95 data-[pressed=true]:duration-75 focus-visible:ring-[3px] focus-visible:ring-ring/50',
         className,
       )}
       {...props}
     >
-      <span className="flex size-[80.77%] items-center justify-center rounded-full bg-brand-green/50">
+      <span className="relative flex size-[80.77%] items-center justify-center rounded-full bg-brand-green/50 transition-transform duration-200 group-data-[pressed=true]:scale-95">
         <PlayIcon className="size-[70.48%]" />
       </span>
     </button>

@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { PlayButton } from '../atoms/play-button';
 import { cn } from '../lib/utils';
+import { Dialog } from './dialog';
 import { SectionInner } from './section';
 
 function MediaBanner({
@@ -11,6 +12,7 @@ function MediaBanner({
   maskSrc,
   shapeSrc,
   wordmarkSrc,
+  videoSrc,
   ...props
 }: React.ComponentProps<'div'> & {
   imageSrc: string;
@@ -18,10 +20,32 @@ function MediaBanner({
   maskSrc: string;
   shapeSrc: string;
   wordmarkSrc: string;
+  videoSrc: string;
 }) {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    if (isPlaying) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [isPlaying]);
+
   const RenderPlayButton = React.useMemo(() => {
     return (
-      <PlayButton className="w-[26cqw] max-w-[130px] md:absolute md:top-0 md:left-1/2 md:ml-0 md:w-[9.2857cqw] md:max-w-none md:-translate-x-1/2 md:-translate-y-1/2" />
+      <PlayButton
+        onClick={() => setIsPlaying(true)}
+        className="w-[26cqw] max-w-[130px] md:absolute md:top-0 md:left-1/2 md:ml-0 md:w-[9.2857cqw] md:max-w-none md:-translate-x-1/2 md:-translate-y-1/2"
+      />
     );
   }, []);
 
@@ -69,6 +93,17 @@ function MediaBanner({
         </div>
         <div className="hidden md:block">{RenderPlayButton}</div>
       </div>
+      <Dialog open={isPlaying} onClose={() => setIsPlaying(false)} closeLabel="Close video">
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          poster={imageSrc}
+          controls
+          playsInline
+          preload="metadata"
+          className="aspect-video w-full rounded-[20px] bg-black"
+        />
+      </Dialog>
     </div>
   );
 }

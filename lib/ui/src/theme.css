@@ -79,4 +79,52 @@
   body {
     @apply bg-background font-sans text-foreground antialiased;
   }
+
+  [data-slot='dialog'] {
+    opacity: 0;
+    scale: 0.94;
+    translate: 0 12px;
+    transition:
+      opacity 250ms ease,
+      scale 250ms ease,
+      translate 250ms ease,
+      overlay 250ms ease allow-discrete,
+      display 250ms ease allow-discrete;
+  }
+
+  [data-slot='dialog'][open] {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+
+  @starting-style {
+    [data-slot='dialog'][open] {
+      opacity: 0;
+      scale: 0.94;
+      translate: 0 12px;
+    }
+  }
+
+  [data-slot='dialog']::backdrop {
+    background-color: rgb(0 0 0 / 0);
+    backdrop-filter: blur(0px);
+    transition:
+      background-color 250ms ease,
+      backdrop-filter 250ms ease,
+      overlay 250ms ease allow-discrete,
+      display 250ms ease allow-discrete;
+  }
+
+  [data-slot='dialog'][open]::backdrop {
+    background-color: rgb(0 0 0 / 0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  @starting-style {
+    [data-slot='dialog'][open]::backdrop {
+      background-color: rgb(0 0 0 / 0);
+      backdrop-filter: blur(0px);
+    }
+  }
 }

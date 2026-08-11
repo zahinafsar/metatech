@@ -357,6 +357,7 @@ export function App() {
           imageAlt="MetaTech team collaborating"
           maskSrc="/brand/banner-mask.svg"
           shapeSrc="/brand/banner-shape.svg"
+          videoSrc="/showreel.mp4"
           wordmarkSrc="/brand/banner-wordmark.svg"
         />
 

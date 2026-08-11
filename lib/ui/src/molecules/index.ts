@@ -8,3 +8,4 @@ export * from './showcase';
 export * from './site-footer';
 export * from './tabs';
 export * from './tech-grid';
+export * from './dialog';
