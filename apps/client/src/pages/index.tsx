@@ -382,7 +382,7 @@ export function App() {
         </Section>
       </div>
 
-      <Section id="solutions" className="bg-background py-[80px] md:py-[50px]">
+      <Section id="solutions" className="bg-background py-[80px]">
         <SectionInner>
           <SectionSplit className="gap-5 lg:gap-[400px]">
             <Eyebrow>{'We Are />'}</Eyebrow>
@@ -446,45 +446,49 @@ export function App() {
         </SectionInner>
       </Section>
 
-      <Showcase id="showcase">
-        <ShowcaseContent className="px-6 lg:px-10">
-          <ShowcaseLogo src="/brand/amicredible-logo.png" alt="AmiCredible" />
-          <div className="flex flex-col gap-[50px]">
-            <div className="flex flex-col gap-[15px]">
-              <ShowcaseTitle>An AI-powered credibility checking platform</ShowcaseTitle>
-              <ShowcaseBody>
-                that helps users verify claims, analyze sources, and make informed decisions with
-                Quick Check, Deep Check, and Image Check features.
-              </ShowcaseBody>
-            </div>
-            <div>
-              <Button variant="outline">
-                Explore more
-                <ArrowRightIcon />
-              </Button>
-            </div>
-          </div>
-        </ShowcaseContent>
-        <ShowcaseMedia>
-          <Carousel loop className="size-full">
-            <CarouselContent className="ml-0">
-              {showcaseSlides.map((slide, index) => (
-                <CarouselItem key={index} className="pl-0">
-                  <div className="relative">
-                    <img
-                      src={slide.src}
-                      alt={slide.alt}
-                      className="h-[420px] w-full rounded-pill object-cover lg:h-[650px]"
-                    />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[129px] rounded-b-pill bg-gradient-to-t from-black/70 to-transparent" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselDots className="absolute bottom-[30px] left-[34px]" />
-          </Carousel>
-        </ShowcaseMedia>
-      </Showcase>
+      <Section id="showcase" className="bg-brand-green-mid">
+        <SectionInner>
+          <Showcase>
+            <ShowcaseContent>
+              <ShowcaseLogo src="/brand/amicredible-logo.png" alt="AmiCredible" />
+              <div className="flex flex-col gap-[30px] md:gap-[50px] mt-20 md:mt-0">
+                <div className="flex flex-col gap-[15px] max-w-[548px]">
+                  <ShowcaseTitle>An AI-powered credibility checking platform</ShowcaseTitle>
+                  <ShowcaseBody>
+                    that helps users verify claims, analyze sources, and make informed decisions
+                    with Quick Check, Deep Check, and Image Check features.
+                  </ShowcaseBody>
+                </div>
+                <div>
+                  <Button variant="outline">
+                    Explore more
+                    <ArrowRightIcon />
+                  </Button>
+                </div>
+              </div>
+            </ShowcaseContent>
+            <ShowcaseMedia>
+              <Carousel loop className="size-full">
+                <CarouselContent className="ml-0">
+                  {showcaseSlides.map((slide, index) => (
+                    <CarouselItem key={index} className="pl-0">
+                      <div className="relative">
+                        <img
+                          src={slide.src}
+                          alt={slide.alt}
+                          className="h-[380px] w-full rounded-[20px] object-cover sm:h-[380px] lg:h-[640px]"
+                        />
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[129px] rounded-b-[20px] bg-gradient-to-t from-black/70 to-transparent" />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselDots className="absolute bottom-[34px] left-[34px] lg:bottom-[60px] lg:left-[62px]" />
+              </Carousel>
+            </ShowcaseMedia>
+          </Showcase>
+        </SectionInner>
+      </Section>
 
       <Section className="bg-background pt-[141px] pb-[50px]">
         <SectionInner>

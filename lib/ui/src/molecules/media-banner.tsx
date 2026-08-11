@@ -55,7 +55,7 @@ function MediaBanner({
       <div
         data-slot="media-banner"
         className={cn(
-          '@container relative flex w-full flex-col-reverse gap-[6cqw] md:block md:gap-0 px-2 md:px-5',
+          '@container relative flex w-full flex-col-reverse gap-[6cqw] md:block md:gap-0 px-2 mx-auto w-full max-w-[1400px] md:px-5 ',
           className,
         )}
         {...props}
