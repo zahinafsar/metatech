@@ -372,11 +372,11 @@ export function App() {
         </Section>
       </div>
 
-      <Section id="solutions" className="bg-background py-[50px]">
+      <Section id="solutions" className="bg-background py-[80px] md:py-[50px]">
         <SectionInner>
-          <SectionSplit className="lg:gap-[400px]">
+          <SectionSplit className="gap-5 lg:gap-[400px]">
             <Eyebrow>{'We Are />'}</Eyebrow>
-            <p className="max-w-[680px] font-display text-[32px] leading-[39px] tracking-[-0.96px]">
+            <p className="max-w-[680px] font-display text-[21px] md:text-[32px] leading-[27px] md:leading-[39px] tracking-[-0.96px]">
               <span className="font-extrabold">
                 Engineering business solutions through three strategic pillars{' '}
               </span>
