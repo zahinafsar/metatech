@@ -4,7 +4,7 @@ import * as React from 'react';
 import { cn } from '../lib/utils';
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-btn font-bold tracking-[-0.7px] whitespace-nowrap outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 font-bold tracking-[-0.7px] whitespace-nowrap outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -15,10 +15,11 @@ const buttonVariants = cva(
         ghost: 'text-foreground hover:bg-secondary',
       },
       size: {
-        default: 'h-[50px] px-[35px] text-sm',
-        compact: 'h-[50px] px-[25px] text-sm',
-        sm: 'h-10 px-5 text-sm',
-        icon: 'size-[50px] px-0',
+        default:
+          'rounded-[10px] lg:rounded-[15px] h-[40px] lg:h-[50px] px-[20px] lg:px-[35px] text-sm',
+        compact: 'rounded-btn h-[50px] px-[25px] text-sm',
+        sm: 'rounded-btn h-10 px-5 text-sm',
+        icon: 'rounded-btn size-[50px] px-0',
       },
     },
     defaultVariants: {

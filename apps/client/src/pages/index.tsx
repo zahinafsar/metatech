@@ -62,7 +62,11 @@ const solutionCards = [
     href: '#solutions',
     imageSrc: '/brand/nav-custom-software.jpg',
   },
-  { title: 'Data+AI First Innovation', href: '#solutions', imageSrc: '/brand/nav-data-ai.jpg' },
+  {
+    title: 'Data+AI First Innovation',
+    href: '#solutions',
+    imageSrc: '/brand/nav-data-ai.jpg',
+  },
   {
     title: 'Tech Staff Augmentation',
     href: '#solutions',
@@ -71,14 +75,34 @@ const solutionCards = [
 ];
 
 const clientLogos = [
-  { name: 'Databricks', src: '/brand/client-databricks.png', width: 172, height: 48 },
-  { name: 'Google Cloud', src: '/brand/client-google-cloud.png', width: 172, height: 45 },
+  {
+    name: 'Databricks',
+    src: '/brand/client-databricks.png',
+    width: 172,
+    height: 48,
+  },
+  {
+    name: 'Google Cloud',
+    src: '/brand/client-google-cloud.png',
+    width: 172,
+    height: 45,
+  },
   { name: 'UiPath', src: '/brand/client-uipath.png', width: 112, height: 50 },
   { name: 'Alteryx', src: '/brand/client-alteryx.png', width: 132, height: 40 },
   { name: 'Alteryx', src: '/brand/client-alteryx.png', width: 132, height: 40 },
   { name: 'Figma', src: '/brand/client-figma.png', width: 132, height: 39 },
-  { name: 'Amazon Web Services', src: '/brand/client-aws.png', width: 80, height: 80 },
-  { name: 'Google Cloud', src: '/brand/client-google-cloud.png', width: 172, height: 45 },
+  {
+    name: 'Amazon Web Services',
+    src: '/brand/client-aws.png',
+    width: 80,
+    height: 80,
+  },
+  {
+    name: 'Google Cloud',
+    src: '/brand/client-google-cloud.png',
+    width: 172,
+    height: 45,
+  },
 ];
 
 const pillars = [
@@ -113,27 +137,105 @@ const pillars = [
 
 const techRows: TechGridItem[][] = [
   [
-    { name: 'React', src: '/tech/react.png', cell: 214, width: 130, height: 73 },
-    { name: 'Next.js', src: '/tech/nextjs.png', cell: 250, width: 132, height: 132 },
-    { name: 'Tailwind CSS', src: '/tech/tailwind.png', cell: 250, width: 200, height: 200 },
-    { name: 'TypeScript', src: '/tech/typescript.png', cell: 250, width: 138, height: 34 },
-    { name: 'Angular', src: '/tech/angular.svg', cell: 250, width: 147, height: 40 },
+    {
+      name: 'React',
+      src: '/tech/react.png',
+      cell: 214,
+      width: 130,
+      height: 73,
+    },
+    {
+      name: 'Next.js',
+      src: '/tech/nextjs.png',
+      cell: 250,
+      width: 132,
+      height: 132,
+    },
+    {
+      name: 'Tailwind CSS',
+      src: '/tech/tailwind.png',
+      cell: 250,
+      width: 200,
+      height: 200,
+    },
+    {
+      name: 'TypeScript',
+      src: '/tech/typescript.png',
+      cell: 250,
+      width: 138,
+      height: 34,
+    },
+    {
+      name: 'Angular',
+      src: '/tech/angular.svg',
+      cell: 250,
+      width: 147,
+      height: 40,
+    },
     { name: 'Vue.js', src: '/tech/vue.png', cell: 176, width: 120, height: 60 },
   ],
   [
     { name: 'Go', src: '/tech/go.png', cell: 174, width: 107, height: 40 },
-    { name: 'Python', src: '/tech/python.png', cell: 250, width: 169, height: 50 },
-    { name: 'Node.js', src: '/tech/nodejs.png', cell: 250, width: 148, height: 40 },
-    { name: '.NET', src: '/tech/dotnet.png', cell: 250, width: 124, height: 70 },
+    {
+      name: 'Python',
+      src: '/tech/python.png',
+      cell: 250,
+      width: 169,
+      height: 50,
+    },
+    {
+      name: 'Node.js',
+      src: '/tech/nodejs.png',
+      cell: 250,
+      width: 148,
+      height: 40,
+    },
+    {
+      name: '.NET',
+      src: '/tech/dotnet.png',
+      cell: 250,
+      width: 124,
+      height: 70,
+    },
     { name: 'Ruby', src: '/tech/ruby.png', cell: 250, width: 216, height: 100 },
     { name: 'PHP', src: '/tech/php.png', cell: 216, width: 111, height: 60 },
   ],
   [
-    { name: 'Django', src: '/tech/django.png', cell: 216, width: 128, height: 50 },
-    { name: 'Laravel', src: '/tech/laravel.png', cell: 250, width: 138, height: 40 },
-    { name: 'Flutter', src: '/tech/flutter.png', cell: 250, width: 140, height: 40 },
-    { name: 'MySQL', src: '/tech/mysql.png', cell: 250, width: 150, height: 100 },
-    { name: 'MongoDB', src: '/tech/mongodb.png', cell: 250, width: 185, height: 50 },
+    {
+      name: 'Django',
+      src: '/tech/django.png',
+      cell: 216,
+      width: 128,
+      height: 50,
+    },
+    {
+      name: 'Laravel',
+      src: '/tech/laravel.png',
+      cell: 250,
+      width: 138,
+      height: 40,
+    },
+    {
+      name: 'Flutter',
+      src: '/tech/flutter.png',
+      cell: 250,
+      width: 140,
+      height: 40,
+    },
+    {
+      name: 'MySQL',
+      src: '/tech/mysql.png',
+      cell: 250,
+      width: 150,
+      height: 100,
+    },
+    {
+      name: 'MongoDB',
+      src: '/tech/mongodb.png',
+      cell: 250,
+      width: 185,
+      height: 50,
+    },
     { name: 'HTML5', src: '/tech/html5.png', cell: 174, width: 70, height: 70 },
   ],
 ];
@@ -229,14 +331,17 @@ export function App() {
       </Navbar>
 
       <div className="bg-deep text-deep-foreground">
-        <Section id="top" className="px-6 pt-[168px] pb-[92px] md:pt-[212px] lg:px-[50px]">
-          <div className="mx-auto flex w-full max-w-[1340px] flex-col items-start gap-12 lg:flex-row lg:items-center lg:gap-[180px]">
+        <Section
+          id="top"
+          className="px-6 pt-[168px] pb-[50px] md:pb-[168px] md:pt-[212px] lg:px-[50px]"
+        >
+          <div className="mx-auto flex w-full max-w-[1340px] flex-col items-start gap-5 lg:flex-row lg:items-center lg:gap-[180px]">
             <h1 className="max-w-[664px] font-display text-[48px] leading-[1] font-extrabold capitalize tracking-[-2.4px] lg:text-[72px] lg:leading-[72px] lg:tracking-[-3.6px]">
               Building <span className="text-brand-green">Intelligence to Power</span> Scalable
               Innovation
             </h1>
-            <div className="flex w-full max-w-[388px] flex-col gap-5">
-              <p className="text-base leading-[23px] font-light">
+            <div className="flex w-full max-w-[388px] flex-col gap-8">
+              <p className="text-sm lg:text-base leading-[23px] font-light">
                 MetaTech integrates custom software engineering, advanced data and AI systems, and
                 strategic staff augmentation to power scalable, high impact digital transformation.
               </p>
@@ -247,14 +352,13 @@ export function App() {
           </div>
         </Section>
 
-        <SectionInner>
-          <MediaBanner
-            imageSrc="/brand/banner-photo.png"
-            imageAlt="MetaTech team collaborating"
-            maskSrc="/brand/banner-mask.svg"
-            wordmarkSrc="/brand/banner-wordmark.svg"
-          />
-        </SectionInner>
+        <MediaBanner
+          imageSrc="/brand/banner-photo.png"
+          imageAlt="MetaTech team collaborating"
+          maskSrc="/brand/banner-mask.svg"
+          shapeSrc="/brand/banner-shape.svg"
+          wordmarkSrc="/brand/banner-wordmark.svg"
+        />
 
         <Section className="px-5 pt-[100px] pb-5">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-10 lg:flex-row">
