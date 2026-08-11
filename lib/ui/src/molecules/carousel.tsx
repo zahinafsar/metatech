@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Button } from '../atoms/button';
-import { Glyph } from '../atoms/glyph';
+import { ChevronLeftIcon, ChevronRightIcon } from '../icons';
 import { cn } from '../lib/utils';
 
 type CarouselContextValue = {
@@ -216,7 +216,7 @@ function CarouselPrevious({ className, ...props }: React.ComponentProps<typeof B
       className={cn(className)}
       {...props}
     >
-      <Glyph name="chevron-left" />
+      <ChevronLeftIcon />
     </Button>
   );
 }
@@ -235,7 +235,7 @@ function CarouselNext({ className, ...props }: React.ComponentProps<typeof Butto
       className={cn(className)}
       {...props}
     >
-      <Glyph name="chevron-right" />
+      <ChevronRightIcon />
     </Button>
   );
 }

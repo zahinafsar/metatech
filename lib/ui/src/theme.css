@@ -33,6 +33,8 @@
   --brand-green-bright: #06ff70;
   --brand-green-mid: #17a955;
 
+  --nav-surface: #425853;
+
   --hairline-on-dark: rgba(255, 255, 255, 0.25);
   --hairline-on-light: rgba(22, 22, 22, 0.25);
 }
@@ -61,6 +63,7 @@
   --color-brand-green: var(--brand-green);
   --color-brand-green-bright: var(--brand-green-bright);
   --color-brand-green-mid: var(--brand-green-mid);
+  --color-nav-surface: var(--nav-surface);
   --color-hairline-dark: var(--hairline-on-dark);
   --color-hairline-light: var(--hairline-on-light);
 

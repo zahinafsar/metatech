@@ -7,7 +7,7 @@ import {
   CarouselDots,
   CarouselItem,
   Eyebrow,
-  Glyph,
+  ArrowRightIcon,
   LogoGrid,
   MediaBanner,
   Navbar,
@@ -15,7 +15,19 @@ import {
   NavbarBrand,
   NavbarInner,
   NavbarLink,
+  NavbarMobileNav,
+  NavbarMobileDisclosure,
+  NavbarMobileExpand,
+  NavbarMobileItem,
+  NavbarMobileSubLink,
+  NavbarMobileSubNav,
   NavbarNav,
+  NavbarItem,
+  NavbarPanel,
+  NavbarPanelCard,
+  NavbarPanelCardTitle,
+  NavbarRow,
+  NavbarToggle,
   PillarBody,
   PillarContent,
   PillarNumber,
@@ -44,10 +56,18 @@ import {
   type TechGridItem,
 } from 'metatech-ui';
 
-const navLinks = [
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Showcase', href: '#showcase' },
-  { label: 'Contact', href: '#contact' },
+const solutionCards = [
+  {
+    title: 'Custom Software Development',
+    href: '#solutions',
+    imageSrc: '/brand/nav-custom-software.jpg',
+  },
+  { title: 'Data+AI First Innovation', href: '#solutions', imageSrc: '/brand/nav-data-ai.jpg' },
+  {
+    title: 'Tech Staff Augmentation',
+    href: '#solutions',
+    imageSrc: '/brand/nav-tech-staffing.jpg',
+  },
 ];
 
 const clientLogos = [
@@ -148,30 +168,68 @@ const socialLinks = [
 export function App() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="bg-deep text-deep-foreground">
-        <SectionInner className="max-w-[1440px] px-0">
-          <Navbar>
-            <NavbarInner>
-              <NavbarBrand href="#top" aria-label="MetaTech home">
-                <img src="/brand/logo-metatech.svg" alt="MetaTech" className="h-[25px] w-[155px]" />
-              </NavbarBrand>
-              <NavbarNav className="lg:ml-[420px]">
-                {navLinks.map((link) => (
-                  <NavbarLink key={link.href} href={link.href}>
-                    {link.label}
-                  </NavbarLink>
+      <Navbar>
+        <NavbarInner>
+          <NavbarRow>
+            <NavbarBrand href="#top" aria-label="MetaTech home">
+              <img
+                src="/brand/logo-metatech.svg"
+                alt="MetaTech"
+                className="h-5 w-[126px] md:h-[25px] md:w-[155px]"
+              />
+            </NavbarBrand>
+            <NavbarNav>
+              <NavbarItem>
+                <NavbarLink href="#solutions" className="group-hover/navbar-item:text-brand-green">
+                  Solutions
+                </NavbarLink>
+              </NavbarItem>
+              <NavbarLink href="#showcase">Showcase</NavbarLink>
+              <NavbarLink href="#contact">Contact</NavbarLink>
+            </NavbarNav>
+            <NavbarActions>
+              <Button variant="glass" size="compact" className="hidden md:inline-flex">
+                Book a meeting
+              </Button>
+              <NavbarToggle />
+            </NavbarActions>
+          </NavbarRow>
+          <NavbarPanel>
+            {solutionCards.map((card) => (
+              <NavbarPanelCard key={card.title} href={card.href} imageSrc={card.imageSrc}>
+                <NavbarPanelCardTitle>{card.title}</NavbarPanelCardTitle>
+              </NavbarPanelCard>
+            ))}
+          </NavbarPanel>
+          <NavbarMobileNav>
+            <NavbarMobileDisclosure>
+              <NavbarMobileItem>
+                <NavbarLink href="#solutions">Solutions</NavbarLink>
+                <NavbarMobileExpand />
+              </NavbarMobileItem>
+              <NavbarMobileSubNav>
+                {solutionCards.map((card) => (
+                  <NavbarMobileSubLink key={card.title} href={card.href}>
+                    {card.title}
+                  </NavbarMobileSubLink>
                 ))}
-              </NavbarNav>
-              <NavbarActions>
-                <Button variant="glass" size="compact">
-                  Book a meeting
-                </Button>
-              </NavbarActions>
-            </NavbarInner>
-          </Navbar>
-        </SectionInner>
+              </NavbarMobileSubNav>
+            </NavbarMobileDisclosure>
+            <NavbarMobileItem>
+              <NavbarLink href="#showcase">Showcase</NavbarLink>
+            </NavbarMobileItem>
+            <NavbarMobileItem>
+              <NavbarLink href="#contact">Contact</NavbarLink>
+            </NavbarMobileItem>
+            <Button variant="glass" size="compact" className="mt-auto w-full shrink-0">
+              Book a meeting
+            </Button>
+          </NavbarMobileNav>
+        </NavbarInner>
+      </Navbar>
 
-        <Section id="top" className="px-6 py-[92px] lg:px-[50px]">
+      <div className="bg-deep text-deep-foreground">
+        <Section id="top" className="px-6 pt-[168px] pb-[92px] md:pt-[212px] lg:px-[50px]">
           <div className="mx-auto flex w-full max-w-[1340px] flex-col items-start gap-12 lg:flex-row lg:items-center lg:gap-[180px]">
             <h1 className="max-w-[664px] font-display text-[48px] leading-[1] font-extrabold capitalize tracking-[-2.4px] lg:text-[72px] lg:leading-[72px] lg:tracking-[-3.6px]">
               Building <span className="text-brand-green">Intelligence to Power</span> Scalable
@@ -194,7 +252,6 @@ export function App() {
             imageSrc="/brand/banner-photo.png"
             imageAlt="MetaTech team collaborating"
             maskSrc="/brand/banner-mask.svg"
-            playIconSrc="/brand/play.svg"
             wordmarkSrc="/brand/banner-wordmark.svg"
           />
         </SectionInner>
@@ -278,7 +335,7 @@ export function App() {
             <div>
               <Button variant="outline">
                 Explore more
-                <Glyph name="arrow-right" />
+                <ArrowRightIcon />
               </Button>
             </div>
           </div>

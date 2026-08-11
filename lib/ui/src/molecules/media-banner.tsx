@@ -8,7 +8,6 @@ function MediaBanner({
   imageSrc,
   imageAlt,
   maskSrc,
-  playIconSrc,
   wordmarkSrc,
   onPlay,
   ...props
@@ -16,7 +15,6 @@ function MediaBanner({
   imageSrc: string;
   imageAlt: string;
   maskSrc: string;
-  playIconSrc: string;
   wordmarkSrc: string;
   onPlay?: () => void;
 }) {
@@ -42,7 +40,6 @@ function MediaBanner({
         />
       </div>
       <PlayButton
-        iconSrc={playIconSrc}
         onClick={onPlay}
         className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />

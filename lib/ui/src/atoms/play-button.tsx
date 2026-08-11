@@ -1,14 +1,14 @@
 import * as React from 'react';
 
+import { PlayIcon } from '../icons';
 import { cn } from '../lib/utils';
 
 function PlayButton({
   className,
-  iconSrc,
   label = 'Play showreel',
   type = 'button',
   ...props
-}: React.ComponentProps<'button'> & { iconSrc: string; label?: string }) {
+}: React.ComponentProps<'button'> & { label?: string }) {
   return (
     <button
       data-slot="play-button"
@@ -22,7 +22,7 @@ function PlayButton({
       {...props}
     >
       <span className="flex size-[105px] items-center justify-center rounded-full bg-brand-green/50">
-        <img src={iconSrc} alt="" className="size-[74px]" />
+        <PlayIcon className="size-[74px]" />
       </span>
     </button>
   );
