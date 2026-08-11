@@ -1,3 +1,349 @@
+import {
+  Button,
+  Card,
+  CardTitle,
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+  Eyebrow,
+  Glyph,
+  LogoGrid,
+  MediaBanner,
+  Navbar,
+  NavbarActions,
+  NavbarBrand,
+  NavbarInner,
+  NavbarLink,
+  NavbarNav,
+  PillarBody,
+  PillarContent,
+  PillarNumber,
+  PillarPanel,
+  PillarTitle,
+  Section,
+  SectionBody,
+  SectionInner,
+  SectionSplit,
+  SectionTitle,
+  Showcase,
+  ShowcaseBody,
+  ShowcaseContent,
+  ShowcaseLogo,
+  ShowcaseMedia,
+  ShowcaseTitle,
+  SiteFooter,
+  SiteFooterLink,
+  SiteFooterTop,
+  SiteFooterWordmark,
+  Tabs,
+  TabsList,
+  TabsPanel,
+  TabsTrigger,
+  TechGrid,
+  type TechGridItem,
+} from 'metatech-ui';
+
+const navLinks = [
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'Showcase', href: '#showcase' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const clientLogos = [
+  { name: 'Databricks', src: '/brand/client-databricks.png', width: 172, height: 48 },
+  { name: 'Google Cloud', src: '/brand/client-google-cloud.png', width: 172, height: 45 },
+  { name: 'UiPath', src: '/brand/client-uipath.png', width: 112, height: 50 },
+  { name: 'Alteryx', src: '/brand/client-alteryx.png', width: 132, height: 40 },
+  { name: 'Alteryx', src: '/brand/client-alteryx.png', width: 132, height: 40 },
+  { name: 'Figma', src: '/brand/client-figma.png', width: 132, height: 39 },
+  { name: 'Amazon Web Services', src: '/brand/client-aws.png', width: 80, height: 80 },
+  { name: 'Google Cloud', src: '/brand/client-google-cloud.png', width: 172, height: 45 },
+];
+
+const pillars = [
+  {
+    value: 'data-ai',
+    tab: 'Data + AI',
+    number: '01',
+    numberSrc: '/brand/num-01.svg',
+    title: 'Data + AI Settings Innovation',
+    body: 'Our Data and AI services combine engineering, analytics, and applied AI to help organizations understand data, predict outcomes, and automate decisions. From trusted analytics to production grade AI systems, we deliver intelligence that works in the real world.',
+    cards: ['Data Integrity First', 'Workflows Before Automation', 'Governance With Same Standard'],
+  },
+  {
+    value: 'custom-software',
+    tab: 'Custom Software',
+    number: '02',
+    numberSrc: '/brand/num-01.svg',
+    title: 'Custom Software Built To Scale',
+    body: 'We design and build custom platforms, internal tools, and customer facing products around the way your business actually works. Every system is engineered for reliability, maintainability, and the scale you expect to reach next.',
+    cards: ['Architecture First', 'Shipped In Increments', 'Owned By Your Team'],
+  },
+  {
+    value: 'tech-staffing',
+    tab: 'Tech Staffing',
+    number: '03',
+    numberSrc: '/brand/num-01.svg',
+    title: 'Elite Talent On Demand',
+    body: 'Our staff augmentation practice places senior engineers, data specialists, and delivery leads directly into your teams. You get vetted people who ramp quickly, work to your standards, and stay accountable to your outcomes.',
+    cards: ['Vetted Senior Talent', 'Embedded In Your Team', 'Flexible Engagements'],
+  },
+];
+
+const techRows: TechGridItem[][] = [
+  [
+    { name: 'React', src: '/tech/react.png', cell: 214, width: 130, height: 73 },
+    { name: 'Next.js', src: '/tech/nextjs.png', cell: 250, width: 132, height: 132 },
+    { name: 'Tailwind CSS', src: '/tech/tailwind.png', cell: 250, width: 200, height: 200 },
+    { name: 'TypeScript', src: '/tech/typescript.png', cell: 250, width: 138, height: 34 },
+    { name: 'Angular', src: '/tech/angular.svg', cell: 250, width: 147, height: 40 },
+    { name: 'Vue.js', src: '/tech/vue.png', cell: 176, width: 120, height: 60 },
+  ],
+  [
+    { name: 'Go', src: '/tech/go.png', cell: 174, width: 107, height: 40 },
+    { name: 'Python', src: '/tech/python.png', cell: 250, width: 169, height: 50 },
+    { name: 'Node.js', src: '/tech/nodejs.png', cell: 250, width: 148, height: 40 },
+    { name: '.NET', src: '/tech/dotnet.png', cell: 250, width: 124, height: 70 },
+    { name: 'Ruby', src: '/tech/ruby.png', cell: 250, width: 216, height: 100 },
+    { name: 'PHP', src: '/tech/php.png', cell: 216, width: 111, height: 60 },
+  ],
+  [
+    { name: 'Django', src: '/tech/django.png', cell: 216, width: 128, height: 50 },
+    { name: 'Laravel', src: '/tech/laravel.png', cell: 250, width: 138, height: 40 },
+    { name: 'Flutter', src: '/tech/flutter.png', cell: 250, width: 140, height: 40 },
+    { name: 'MySQL', src: '/tech/mysql.png', cell: 250, width: 150, height: 100 },
+    { name: 'MongoDB', src: '/tech/mongodb.png', cell: 250, width: 185, height: 50 },
+    { name: 'HTML5', src: '/tech/html5.png', cell: 174, width: 70, height: 70 },
+  ],
+];
+
+const showcaseSlides = [
+  {
+    src: '/brand/amicredible-shot.png',
+    alt: 'AmiCredible dashboard on a tablet',
+  },
+  {
+    src: '/brand/amicredible-shot.png',
+    alt: 'AmiCredible quick check view',
+  },
+  {
+    src: '/brand/amicredible-shot.png',
+    alt: 'AmiCredible deep check view',
+  },
+];
+
+const footerLinks = [
+  { label: 'Terms of Use', href: '#terms' },
+  { label: 'Privacy Policy', href: '#privacy' },
+];
+
+const socialLinks = [
+  { label: 'Facebook', href: 'https://facebook.com' },
+  { label: 'Linkedin', href: 'https://linkedin.com' },
+  { label: 'Instagram', href: 'https://instagram.com' },
+  { label: 'Youtube', href: 'https://youtube.com' },
+];
+
 export function App() {
-  return <div className="text-9xl text-red-500">Hello</div>;
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="bg-deep text-deep-foreground">
+        <SectionInner className="max-w-[1440px] px-0">
+          <Navbar>
+            <NavbarInner>
+              <NavbarBrand href="#top" aria-label="MetaTech home">
+                <img src="/brand/logo-metatech.svg" alt="MetaTech" className="h-[25px] w-[155px]" />
+              </NavbarBrand>
+              <NavbarNav className="lg:ml-[420px]">
+                {navLinks.map((link) => (
+                  <NavbarLink key={link.href} href={link.href}>
+                    {link.label}
+                  </NavbarLink>
+                ))}
+              </NavbarNav>
+              <NavbarActions>
+                <Button variant="glass" size="compact">
+                  Book a meeting
+                </Button>
+              </NavbarActions>
+            </NavbarInner>
+          </Navbar>
+        </SectionInner>
+
+        <Section id="top" className="px-6 py-[92px] lg:px-[50px]">
+          <div className="mx-auto flex w-full max-w-[1340px] flex-col items-start gap-12 lg:flex-row lg:items-center lg:gap-[180px]">
+            <h1 className="max-w-[664px] font-display text-[48px] leading-[1] font-extrabold capitalize tracking-[-2.4px] lg:text-[72px] lg:leading-[72px] lg:tracking-[-3.6px]">
+              Building <span className="text-brand-green">Intelligence to Power</span> Scalable
+              Innovation
+            </h1>
+            <div className="flex w-full max-w-[388px] flex-col gap-5">
+              <p className="text-base leading-[23px] font-light">
+                MetaTech integrates custom software engineering, advanced data and AI systems, and
+                strategic staff augmentation to power scalable, high impact digital transformation.
+              </p>
+              <div>
+                <Button variant="primary">Book for Demo</Button>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <SectionInner>
+          <MediaBanner
+            imageSrc="/brand/banner-photo.png"
+            imageAlt="MetaTech team collaborating"
+            maskSrc="/brand/banner-mask.svg"
+            playIconSrc="/brand/play.svg"
+            wordmarkSrc="/brand/banner-wordmark.svg"
+          />
+        </SectionInner>
+
+        <Section className="px-5 pt-[100px] pb-5">
+          <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-10 lg:flex-row">
+            <Eyebrow className="max-w-[192px] text-lg leading-5 whitespace-normal">
+              <span className="text-brand-green">Trusted by</span> product teams and enterprise{' '}
+              <span className="text-brand-green">innovators.</span>
+            </Eyebrow>
+            <LogoGrid items={clientLogos} className="w-full lg:w-[925px]" />
+          </div>
+        </Section>
+      </div>
+
+      <Section id="solutions" className="bg-background py-[50px]">
+        <SectionInner>
+          <SectionSplit className="lg:gap-[400px]">
+            <Eyebrow>{'We Are />'}</Eyebrow>
+            <p className="max-w-[680px] font-display text-[32px] leading-[39px] tracking-[-0.96px]">
+              <span className="font-extrabold">
+                Engineering business solutions through three strategic pillars{' '}
+              </span>
+              AI powered delivery combining intelligent software engineering, data driven insight,
+              and elite talent to accelerate scale, quality, and competitive advantage.
+            </p>
+          </SectionSplit>
+        </SectionInner>
+      </Section>
+
+      <Section className="bg-muted py-[50px]">
+        <Tabs defaultValue={pillars[0].value}>
+          <SectionInner>
+            <TabsList className="mx-auto w-full max-w-[612px] overflow-x-auto">
+              {pillars.map((pillar) => (
+                <TabsTrigger key={pillar.value} value={pillar.value}>
+                  {pillar.tab}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </SectionInner>
+
+          {pillars.map((pillar) => (
+            <TabsPanel key={pillar.value} value={pillar.value}>
+              <SectionInner className="py-[50px]">
+                <PillarPanel className="lg:gap-[320px]">
+                  <PillarNumber src={pillar.numberSrc} alt={pillar.number} />
+                  <PillarContent>
+                    <PillarTitle>{pillar.title}</PillarTitle>
+                    <PillarBody>{pillar.body}</PillarBody>
+                    <Button variant="ink">Book a consultation</Button>
+                  </PillarContent>
+                </PillarPanel>
+              </SectionInner>
+
+              <SectionInner>
+                <div className="grid gap-4 lg:grid-cols-3">
+                  {pillar.cards.map((card) => (
+                    <Card key={card} className="min-h-[450px] items-center text-center">
+                      <CardTitle>{card}</CardTitle>
+                    </Card>
+                  ))}
+                </div>
+              </SectionInner>
+            </TabsPanel>
+          ))}
+        </Tabs>
+      </Section>
+
+      <Showcase id="showcase">
+        <ShowcaseContent className="px-6 lg:px-10">
+          <ShowcaseLogo src="/brand/amicredible-logo.png" alt="AmiCredible" />
+          <div className="flex flex-col gap-[50px]">
+            <div className="flex flex-col gap-[15px]">
+              <ShowcaseTitle>An AI-powered credibility checking platform</ShowcaseTitle>
+              <ShowcaseBody>
+                that helps users verify claims, analyze sources, and make informed decisions with
+                Quick Check, Deep Check, and Image Check features.
+              </ShowcaseBody>
+            </div>
+            <div>
+              <Button variant="outline">
+                Explore more
+                <Glyph name="arrow-right" />
+              </Button>
+            </div>
+          </div>
+        </ShowcaseContent>
+        <ShowcaseMedia>
+          <Carousel loop className="size-full">
+            <CarouselContent className="ml-0">
+              {showcaseSlides.map((slide, index) => (
+                <CarouselItem key={index} className="pl-0">
+                  <div className="relative">
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="h-[420px] w-full rounded-pill object-cover lg:h-[650px]"
+                    />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[129px] rounded-b-pill bg-gradient-to-t from-black/70 to-transparent" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselDots className="absolute bottom-[30px] left-[34px]" />
+          </Carousel>
+        </ShowcaseMedia>
+      </Showcase>
+
+      <Section className="bg-background pt-[141px] pb-[50px]">
+        <SectionInner>
+          <SectionSplit className="lg:gap-[358px]">
+            <Eyebrow className="leading-6">{'Tech Stacks />'}</Eyebrow>
+            <div className="flex max-w-[681px] flex-col gap-[30px]">
+              <SectionTitle>Built With Modern Technologies</SectionTitle>
+              <SectionBody>
+                We use modern, reliable technologies to design, build, and scale high-performance
+                software systems. Our team works with proven tools to deliver secure, scalable,
+                production-ready solutions.
+              </SectionBody>
+            </div>
+          </SectionSplit>
+        </SectionInner>
+        <TechGrid rows={techRows} className="mt-[50px]" />
+      </Section>
+
+      <SiteFooter id="contact">
+        <SiteFooterTop>
+          <p className="w-[323px]">
+            @2022-2026 <span className="text-brand-green">MetaTech LLC </span>
+            {'// All Rights Reserved'}
+          </p>
+          <div className="flex items-center gap-[30px]">
+            {footerLinks.map((link) => (
+              <SiteFooterLink key={link.href} href={link.href}>
+                {link.label}
+              </SiteFooterLink>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-[30px]">
+            {socialLinks.map((link) => (
+              <SiteFooterLink key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                {link.label}
+              </SiteFooterLink>
+            ))}
+          </div>
+        </SiteFooterTop>
+        <SiteFooterWordmark src="/brand/footer-wordmark.svg" alt="MetaTech" />
+      </SiteFooter>
+    </div>
+  );
 }

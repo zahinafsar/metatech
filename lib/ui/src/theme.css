@@ -1,0 +1,79 @@
+:root {
+  --radius: 15px;
+
+  --background: #ffffff;
+  --foreground: #161616;
+
+  --card: #ffffff;
+  --card-foreground: #161616;
+
+  --primary: #33f987;
+  --primary-foreground: #161616;
+
+  --secondary: #f8f8f8;
+  --secondary-foreground: #161616;
+
+  --muted: #e9edf0;
+  --muted-foreground: rgba(22, 22, 22, 0.7);
+
+  --accent: #06ff70;
+  --accent-foreground: #161616;
+
+  --border: #e3e3e3;
+  --input: #e3e3e3;
+  --ring: #33f987;
+
+  --deep: #032019;
+  --deep-foreground: #ffffff;
+
+  --ink: #161616;
+  --ink-foreground: #efefef;
+
+  --brand-green: #33f987;
+  --brand-green-bright: #06ff70;
+  --brand-green-mid: #17a955;
+
+  --hairline-on-dark: rgba(255, 255, 255, 0.25);
+  --hairline-on-light: rgba(22, 22, 22, 0.25);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-bright: var(--brand-green-bright);
+  --color-brand-green-mid: var(--brand-green-mid);
+  --color-hairline-dark: var(--hairline-on-dark);
+  --color-hairline-light: var(--hairline-on-light);
+
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Manrope', ui-sans-serif, sans-serif;
+
+  --radius-btn: 15px;
+  --radius-tile: 15px;
+  --radius-pill: 25px;
+}
+
+@layer base {
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+}
