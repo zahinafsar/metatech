@@ -6,7 +6,7 @@ function PillarPanel({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="pillar-panel"
-      className={cn('flex flex-col gap-10 lg:flex-row lg:gap-[80px]', className)}
+      className={cn('flex flex-col gap-10 xl:flex-row xl:gap-[80px]', className)}
       {...props}
     />
   );

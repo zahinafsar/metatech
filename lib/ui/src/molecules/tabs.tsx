@@ -102,27 +102,30 @@ function TabsTrigger({
   );
 }
 
+function TabsPanels({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div data-slot="tabs-panels" className={cn('grid', className)} {...props} />;
+}
+
 function TabsPanel({
   className,
   value,
   ...props
 }: React.ComponentProps<'div'> & { value: string }) {
   const { value: activeValue, baseId } = useTabs();
-
-  if (activeValue !== value) {
-    return null;
-  }
+  const isActive = activeValue === value;
 
   return (
     <div
       data-slot="tabs-panel"
+      data-state={isActive ? 'active' : 'inactive'}
       role="tabpanel"
       id={`${baseId}-panel-${value}`}
       aria-labelledby={`${baseId}-tab-${value}`}
-      className={cn(className)}
+      inert={!isActive}
+      className={cn('col-start-1 row-start-1', className)}
       {...props}
     />
   );
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsPanel, useTabs };
+export { Tabs, TabsList, TabsTrigger, TabsPanels, TabsPanel, useTabs };

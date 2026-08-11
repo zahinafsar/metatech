@@ -28,6 +28,10 @@ function PlayButton({
       )}
       {...props}
     >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 animate-pulse-ring rounded-full bg-brand-green/40 motion-reduce:hidden"
+      />
       <span className="relative flex size-[80.77%] items-center justify-center rounded-full bg-brand-green/50 transition-transform duration-200 group-data-[pressed=true]:scale-95">
         <PlayIcon className="size-[70.48%]" />
       </span>

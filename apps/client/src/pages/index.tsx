@@ -52,6 +52,7 @@ import {
   Tabs,
   TabsList,
   TabsPanel,
+  TabsPanels,
   TabsTrigger,
   TechGrid,
   type TechGridItem,
@@ -384,7 +385,7 @@ export function App() {
 
       <Section id="solutions" className="bg-background py-[80px]">
         <SectionInner>
-          <SectionSplit className="gap-5 lg:gap-[400px]">
+          <SectionSplit className="gap-5 lg:gap-[380px]">
             <Eyebrow>{'We Are />'}</Eyebrow>
             <p className="max-w-[680px] font-display text-[21px] md:text-[32px] leading-[27px] md:leading-[39px] tracking-[-0.96px]">
               <span className="font-extrabold">
@@ -399,8 +400,9 @@ export function App() {
 
       <Section className="bg-muted py-[50px]">
         <Tabs defaultValue={pillars[0].value}>
-          <SectionInner>
-            <TabsList className="mx-auto w-full md:max-w-[612px] overflow-x-auto">
+          <SectionInner className="flex">
+            <span aria-hidden className="hidden w-[455px] shrink-0 xl:block" />
+            <TabsList className="mx-auto w-full min-w-0 overflow-x-auto md:max-w-[612px] xl:mx-0">
               {pillars.map((pillar) => (
                 <TabsTrigger key={pillar.value} value={pillar.value}>
                   {pillar.tab}
@@ -409,30 +411,32 @@ export function App() {
             </TabsList>
           </SectionInner>
 
-          {pillars.map((pillar) => (
-            <TabsPanel key={pillar.value} value={pillar.value}>
-              <SectionInner className="py-[100px] md:py-[50px] md:pt-[100px]">
-                <PillarPanel className="lg:gap-[320px]">
-                  <PillarNumber>{pillar.number}</PillarNumber>
-                  <PillarContent>
-                    <PillarTitle>{pillar.title}</PillarTitle>
-                    <PillarBody>{pillar.body}</PillarBody>
-                    <Button variant="ink">Book a consultation</Button>
-                  </PillarContent>
-                </PillarPanel>
-              </SectionInner>
-            </TabsPanel>
-          ))}
+          <TabsPanels>
+            {pillars.map((pillar) => (
+              <TabsPanel key={pillar.value} value={pillar.value}>
+                <SectionInner className="pb-[50px] pt-[100px] md:py-[50px] md:pt-[100px]">
+                  <PillarPanel className="xl:gap-[290px]">
+                    <PillarNumber>{pillar.number}</PillarNumber>
+                    <PillarContent>
+                      <PillarTitle>{pillar.title}</PillarTitle>
+                      <PillarBody>{pillar.body}</PillarBody>
+                      <Button variant="ink">Book a consultation</Button>
+                    </PillarContent>
+                  </PillarPanel>
+                </SectionInner>
+              </TabsPanel>
+            ))}
+          </TabsPanels>
         </Tabs>
       </Section>
 
       <Section className="bg-muted pb-[50px]">
         <SectionInner>
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:overflow-visible [&::-webkit-scrollbar]:hidden">
             {solutionHighlights.map((highlight) => (
               <Card
                 key={highlight.title}
-                className="group/card relative min-h-[450px] justify-between overflow-hidden border-deep bg-deep text-deep-foreground transition-colors duration-300 ease-out md:justify-center md:border-border md:bg-card md:text-card-foreground md:hover:justify-start md:hover:border-deep md:hover:bg-deep md:hover:text-deep-foreground"
+                className="group/card relative w-full min-h-[350px] md:min-h-[450px] shrink-0 snap-start justify-between overflow-hidden border-deep bg-deep text-deep-foreground transition-colors duration-300 ease-out md:w-[60%] md:justify-center md:border-border md:bg-card md:text-card-foreground md:hover:justify-start md:hover:border-deep md:hover:bg-deep md:hover:text-deep-foreground lg:w-auto lg:shrink"
               >
                 <CardTitle className="text-brand-green transition-colors duration-300 ease-out md:text-center md:text-inherit md:group-hover/card:text-left md:group-hover/card:text-brand-green">
                   {highlight.title}
@@ -468,7 +472,7 @@ export function App() {
               </div>
             </ShowcaseContent>
             <ShowcaseMedia>
-              <Carousel loop className="size-full">
+              <Carousel loop autoplayDelay={5000} className="size-full">
                 <CarouselContent className="ml-0">
                   {showcaseSlides.map((slide, index) => (
                     <CarouselItem key={index} className="pl-0">
@@ -483,20 +487,22 @@ export function App() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselDots className="absolute bottom-[34px] left-[34px] lg:bottom-[60px] lg:left-[62px]" />
+                <CarouselDots className="absolute bottom-[24px] left-[24px] lg:bottom-[34px] lg:left-[34px]" />
               </Carousel>
             </ShowcaseMedia>
           </Showcase>
         </SectionInner>
       </Section>
 
-      <Section className="bg-background pt-[141px] pb-[50px]">
+      <Section className="bg-background pb-[80px] pt-[100px] lg:pt-[150px]">
         <SectionInner>
-          <SectionSplit className="lg:gap-[358px]">
-            <Eyebrow className="leading-6">{'Tech Stacks />'}</Eyebrow>
-            <div className="flex max-w-[681px] flex-col gap-[30px]">
-              <SectionTitle>Built With Modern Technologies</SectionTitle>
-              <SectionBody>
+          <SectionSplit className="gap-5 lg:gap-[340px]">
+            <Eyebrow>{'Tech Stacks />'}</Eyebrow>
+            <div className="flex max-w-[680px] flex-col gap-5">
+              <SectionTitle className="text-[28px] md:leading-[27px] leading-[34px] tracking-[-0.96px] md:text-[32px] md:leading-[39px]">
+                Built With Modern Technologies
+              </SectionTitle>
+              <SectionBody className="text-sm leading-5 md:text-lg md:leading-[27px]">
                 We use modern, reliable technologies to design, build, and scale high-performance
                 software systems. Our team works with proven tools to deliver secure, scalable,
                 production-ready solutions.
