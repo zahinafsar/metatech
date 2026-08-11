@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  CardDescription,
   CardTitle,
   Carousel,
   CarouselContent,
@@ -110,28 +111,37 @@ const pillars = [
     value: 'data-ai',
     tab: 'Data + AI',
     number: '01',
-    numberSrc: '/brand/num-01.svg',
     title: 'Data + AI Settings Innovation',
     body: 'Our Data and AI services combine engineering, analytics, and applied AI to help organizations understand data, predict outcomes, and automate decisions. From trusted analytics to production grade AI systems, we deliver intelligence that works in the real world.',
-    cards: ['Data Integrity First', 'Workflows Before Automation', 'Governance With Same Standard'],
   },
   {
     value: 'custom-software',
     tab: 'Custom Software',
     number: '02',
-    numberSrc: '/brand/num-01.svg',
     title: 'Custom Software Built To Scale',
-    body: 'We design and build custom platforms, internal tools, and customer facing products around the way your business actually works. Every system is engineered for reliability, maintainability, and the scale you expect to reach next.',
-    cards: ['Architecture First', 'Shipped In Increments', 'Owned By Your Team'],
+    body: 'Our Data and AI services combine engineering, analytics, and applied AI to help organizations understand data, predict outcomes, and automate decisions. From trusted analytics to production grade AI systems, we deliver intelligence that works in the real world.',
   },
   {
     value: 'tech-staffing',
     tab: 'Tech Staffing',
     number: '03',
-    numberSrc: '/brand/num-01.svg',
     title: 'Elite Talent On Demand',
-    body: 'Our staff augmentation practice places senior engineers, data specialists, and delivery leads directly into your teams. You get vetted people who ramp quickly, work to your standards, and stay accountable to your outcomes.',
-    cards: ['Vetted Senior Talent', 'Embedded In Your Team', 'Flexible Engagements'],
+    body: 'Our Data and AI services combine engineering, analytics, and applied AI to help organizations understand data, predict outcomes, and automate decisions. From trusted analytics to production grade AI systems, we deliver intelligence that works in the real world.',
+  },
+];
+
+const solutionHighlights = [
+  {
+    title: 'Data Integrity First',
+    body: 'AI outputs are only as reliable as the data feeding them. We design, validate, and strengthen your data foundation from the ground up. Garbage in, garbage out is not a risk we take with your business.',
+  },
+  {
+    title: 'Workflows Before Automation',
+    body: 'Before we build anything, we map your business workflows end to end by surveying the ambiguity. We understand the decisions being made, the people making them, and the systems involved. That clarity determines how and where automation creates real leverage, not just activity.',
+  },
+  {
+    title: 'Governance With Same Standard',
+    body: 'We implement data governance frameworks that carry the same accountability as human oversight. Your agents operate within defined boundaries. Auditability, control, and compliance are built in, not added on.',
   },
 ];
 
@@ -390,7 +400,7 @@ export function App() {
       <Section className="bg-muted py-[50px]">
         <Tabs defaultValue={pillars[0].value}>
           <SectionInner>
-            <TabsList className="mx-auto w-full max-w-[612px] overflow-x-auto">
+            <TabsList className="mx-auto w-full md:max-w-[612px] overflow-x-auto">
               {pillars.map((pillar) => (
                 <TabsTrigger key={pillar.value} value={pillar.value}>
                   {pillar.tab}
@@ -401,9 +411,9 @@ export function App() {
 
           {pillars.map((pillar) => (
             <TabsPanel key={pillar.value} value={pillar.value}>
-              <SectionInner className="py-[50px]">
+              <SectionInner className="py-[100px] md:py-[50px] md:pt-[100px]">
                 <PillarPanel className="lg:gap-[320px]">
-                  <PillarNumber src={pillar.numberSrc} alt={pillar.number} />
+                  <PillarNumber>{pillar.number}</PillarNumber>
                   <PillarContent>
                     <PillarTitle>{pillar.title}</PillarTitle>
                     <PillarBody>{pillar.body}</PillarBody>
@@ -411,19 +421,29 @@ export function App() {
                   </PillarContent>
                 </PillarPanel>
               </SectionInner>
-
-              <SectionInner>
-                <div className="grid gap-4 lg:grid-cols-3">
-                  {pillar.cards.map((card) => (
-                    <Card key={card} className="min-h-[450px] items-center text-center">
-                      <CardTitle>{card}</CardTitle>
-                    </Card>
-                  ))}
-                </div>
-              </SectionInner>
             </TabsPanel>
           ))}
         </Tabs>
+      </Section>
+
+      <Section className="bg-muted pb-[50px]">
+        <SectionInner>
+          <div className="grid gap-4 lg:grid-cols-3">
+            {solutionHighlights.map((highlight) => (
+              <Card
+                key={highlight.title}
+                className="group/card relative min-h-[450px] justify-between overflow-hidden border-deep bg-deep text-deep-foreground transition-colors duration-300 ease-out md:justify-center md:border-border md:bg-card md:text-card-foreground md:hover:justify-start md:hover:border-deep md:hover:bg-deep md:hover:text-deep-foreground"
+              >
+                <CardTitle className="text-brand-green transition-colors duration-300 ease-out md:text-center md:text-inherit md:group-hover/card:text-left md:group-hover/card:text-brand-green">
+                  {highlight.title}
+                </CardTitle>
+                <CardDescription className="text-inherit transition-opacity duration-300 ease-out md:absolute md:inset-x-[30px] md:bottom-[30px] md:opacity-0 md:group-hover/card:opacity-100">
+                  {highlight.body}
+                </CardDescription>
+              </Card>
+            ))}
+          </div>
+        </SectionInner>
       </Section>
 
       <Showcase id="showcase">

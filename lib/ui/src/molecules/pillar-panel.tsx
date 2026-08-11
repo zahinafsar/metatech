@@ -12,18 +12,14 @@ function PillarPanel({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function PillarNumber({
-  className,
-  src,
-  alt,
-  ...props
-}: React.ComponentProps<'img'> & { alt: string }) {
+function PillarNumber({ className, ...props }: React.ComponentProps<'span'>) {
   return (
-    <img
+    <span
       data-slot="pillar-number"
-      src={src}
-      alt={alt}
-      className={cn('h-[117px] w-[147px] shrink-0', className)}
+      className={cn(
+        'shrink-0 w-[164px] font-display text-[120px] leading-none font-extrabold tracking-[-6px] md:text-[148px] md:tracking-[-7.4px]',
+        className,
+      )}
       {...props}
     />
   );
@@ -44,7 +40,7 @@ function PillarTitle({ className, ...props }: React.ComponentProps<'h3'>) {
     <h3
       data-slot="pillar-title"
       className={cn(
-        'max-w-[461px] font-display text-[32px] leading-9 font-extrabold tracking-[-1.6px]',
+        'max-w-[461px] font-display text-[24px] md:text-[32px] leading-9 font-extrabold tracking-[-1.6px]',
         className,
       )}
       {...props}

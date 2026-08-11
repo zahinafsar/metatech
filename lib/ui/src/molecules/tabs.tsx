@@ -64,7 +64,7 @@ function TabsList({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="tabs-list"
       role="tablist"
       className={cn(
-        'flex h-[70px] items-center justify-center rounded-tile bg-background px-[10px]',
+        'flex items-center gap-[5px] md:gap-[10px] overflow-x-auto md:rounded-tile [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:h-[70px] md:justify-center md:gap-0 md:bg-background md:px-[10px]',
         className,
       )}
       {...props}
@@ -91,8 +91,10 @@ function TabsTrigger({
       aria-controls={`${baseId}-panel-${value}`}
       onClick={() => setValue(value)}
       className={cn(
-        'flex h-[60px] w-[200px] items-center justify-center rounded-[10px] px-[10px] text-lg leading-[30px] font-bold tracking-[-0.9px] whitespace-nowrap outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50',
-        isActive ? 'bg-ink text-brand-green-bright' : 'text-foreground hover:text-muted-foreground',
+        'flex h-[40px] md:h-[60px] shrink-0 items-center justify-center rounded-[5px] md:rounded-[10px] text-base md:text-lg leading-[30px] font-bold tracking-[-0.9px] whitespace-nowrap outline-none transition-colors md:w-[200px] px-6 md:px-[10px] focus-visible:ring-[3px] focus-visible:ring-ring/50',
+        isActive
+          ? 'bg-ink text-brand-green-bright'
+          : 'bg-background text-foreground hover:text-muted-foreground md:bg-transparent',
         className,
       )}
       {...props}
