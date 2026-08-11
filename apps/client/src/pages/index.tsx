@@ -363,7 +363,7 @@ export function App() {
 
         <Section className="px-5 pt-[100px] pb-5">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-10 lg:flex-row">
-            <Eyebrow className="max-w-[192px] text-lg leading-5 whitespace-normal">
+            <Eyebrow className="text-lg leading-6 whitespace-normal max-w-[216px] md:max-w-[178px]">
               <span className="text-brand-green">Trusted by</span> product teams and enterprise{' '}
               <span className="text-brand-green">innovators.</span>
             </Eyebrow>

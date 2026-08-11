@@ -7,7 +7,7 @@ function LogoTile({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="logo-tile"
       className={cn(
-        'flex h-[100px] flex-col items-center justify-center border border-hairline-dark',
+        'flex h-[100px] flex-col items-center justify-center border border-hairline-dark px-4',
         className,
       )}
       {...props}
@@ -25,7 +25,7 @@ function LogoTileImage({
       data-slot="logo-tile-image"
       alt={alt}
       loading="lazy"
-      className={cn('max-w-none object-contain', className)}
+      className={cn('max-h-[60%] max-w-full object-contain', className)}
       {...props}
     />
   );
