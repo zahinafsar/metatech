@@ -1,4 +1,3 @@
-export * from './atoms';
-export * from './molecules';
+export * from './components';
 export * from './icons';
-export * from './lib/utils';
+export * from './utils';

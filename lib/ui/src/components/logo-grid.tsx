@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { LogoTile, LogoTileImage } from '../atoms/logo-tile';
-import { cn } from '../lib/utils';
+import { LogoTile, LogoTileImage } from '../components/logo-tile';
+import { cn } from '../utils';
 
 type LogoGridItem = {
   name: string;

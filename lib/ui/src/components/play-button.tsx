@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PlayIcon } from '../icons';
-import { cn } from '../lib/utils';
+import { cn } from '../utils';
 
 function PlayButton({
   className,

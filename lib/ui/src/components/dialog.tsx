@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { CloseIcon } from '../icons';
-import { cn } from '../lib/utils';
+import { cn } from '../utils';
 
 function Dialog({
   className,

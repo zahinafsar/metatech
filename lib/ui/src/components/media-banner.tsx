@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { PlayButton } from '../atoms/play-button';
-import { cn } from '../lib/utils';
+import { PlayButton } from '../components/play-button';
+import { cn } from '../utils';
 import { Dialog } from './dialog';
 import { SectionInner } from './section';
 

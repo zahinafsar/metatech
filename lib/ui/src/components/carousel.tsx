@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Button } from '../atoms/button';
+import { Button } from '../components/button';
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons';
-import { cn } from '../lib/utils';
+import { cn } from '../utils';
 
 type CarouselContextValue = {
   viewportRef: React.RefObject<HTMLDivElement | null>;

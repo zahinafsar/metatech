@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { cn } from '../lib/utils';
+import { cn } from '../utils';
 
 function Showcase({ className, ...props }: React.ComponentProps<'section'>) {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { TechTile, TechTileImage } from '../atoms/tech-tile';
-import { cn } from '../lib/utils';
+import { TechTile, TechTileImage } from '../components/tech-tile';
+import { cn } from '../utils';
 
 type TechGridItem = {
   name: string;
