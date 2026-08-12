@@ -22,26 +22,6 @@ npm run dev
 | Client  | http://localhost:8081 |
 | Server  | http://localhost:8082 |
 
-In development the Vite dev server proxies `/api` to `http://localhost:8082`, so no CORS hop and no
-client env var is needed. For a deployed frontend, set `VITE_API_URL` to the public API origin
-(see `apps/client/.env.example`).
-
-## Deployment
-
-Production runs behind a reverse proxy:
-
-| Service | URL                                 | Container port |
-| ------- | ----------------------------------- | -------------- |
-| Client  | https://metatech.zahinafsar.com     | 8081           |
-| Server  | https://api.metatech.zahinafsar.com | 8082           |
-
-```bash
-docker compose up -d --build
-```
-
-`VITE_API_URL` is baked into the client at build time and is set in `apps/client/Dockerfile`. To
-point the frontend at a different API, change that `ARG` and rebuild the client image.
-
 ### Scripts
 
 | Command              | Description                                    |
@@ -105,8 +85,6 @@ Base path `/api`. Success responses return the payload directly; failures return
 
 | Endpoint              | Returns                                          |
 | --------------------- | ------------------------------------------------ |
-| `GET /api/health`     | `{ "status": "ok" }`                             |
-| `GET /api/home`       | Full page payload (all sections below)           |
 | `GET /api/navigation` | Header brand, links, mega-menu cards, CTA        |
 | `GET /api/hero`       | Hero title, highlight phrases, description, CTA  |
 | `GET /api/showreel`   | Media banner image, mask, shape, video, wordmark |
@@ -126,3 +104,20 @@ Unknown paths return 404 in the same error shape.
 - **Backend:** Node.js, Express 5, TypeScript (run natively via type stripping)
 - **State:** React Context (`lib/state`), no external data library
 - **Tooling:** npm workspaces, oxlint, oxfmt, husky + lint-staged, commitizen
+
+## Assumptions
+
+- Content is static, per the brief: no database and no authentication. It lives in `lib/data` as a
+  typed module rather than a loose JSON file so the server and client share one contract.
+- Images and video are static assets served by the client (`apps/client/public`); the API returns
+  their paths, not their bytes.
+- Single-page design, so no router. Navigation is in-page anchors; a router would be added the
+  moment a second page exists.
+- The 60 s cache window means each section endpoint is fetched once per page load.
+
+## Future improvements
+
+- Unit tests for the cache/`useApi` behaviour and the controllers (React Testing Library + `node:test`)
+- Move content to a CMS or database behind the same endpoints, plus response caching headers
+- Server-side rendering or prerendering for SEO and first-paint
+- Playwright visual regression against the Figma reference
