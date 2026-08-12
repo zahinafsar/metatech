@@ -5,10 +5,9 @@ import type { NextFunction, Request, Response } from 'express';
 import { router } from './routes/index.ts';
 
 const app = express();
-const port = Number(process.env.PORT ?? 4000);
-const corsOrigin = process.env.CORS_ORIGIN ?? '*';
+const port = Number(process.env.PORT ?? 8082);
 
-app.use(cors({ origin: corsOrigin }));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use('/api', router);
 

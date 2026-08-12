@@ -12,7 +12,6 @@ that renders every section from content served by an Express REST API.
 
 ```bash
 npm install
-cp apps/server/.env.example apps/server/.env   # optional
 npm run dev
 ```
 
@@ -20,12 +19,28 @@ npm run dev
 
 | Process | URL                   |
 | ------- | --------------------- |
-| Client  | http://localhost:3000 |
-| Server  | http://localhost:4000 |
+| Client  | http://localhost:8081 |
+| Server  | http://localhost:8082 |
 
-In development the Vite dev server proxies `/api` to `http://localhost:4000`, so no CORS hop and no
+In development the Vite dev server proxies `/api` to `http://localhost:8082`, so no CORS hop and no
 client env var is needed. For a deployed frontend, set `VITE_API_URL` to the public API origin
 (see `apps/client/.env.example`).
+
+## Deployment
+
+Production runs behind a reverse proxy:
+
+| Service | URL                                 | Container port |
+| ------- | ----------------------------------- | -------------- |
+| Client  | https://metatech.zahinafsar.com     | 8081           |
+| Server  | https://api.metatech.zahinafsar.com | 8082           |
+
+```bash
+docker compose up -d --build
+```
+
+`VITE_API_URL` is baked into the client at build time and is set in `apps/client/Dockerfile`. To
+point the frontend at a different API, change that `ARG` and rebuild the client image.
 
 ### Scripts
 
@@ -111,26 +126,3 @@ Unknown paths return 404 in the same error shape.
 - **Backend:** Node.js, Express 5, TypeScript (run natively via type stripping)
 - **State:** React Context (`lib/state`), no external data library
 - **Tooling:** npm workspaces, oxlint, oxfmt, husky + lint-staged, commitizen
-
-## Assumptions
-
-- Content is static, per the brief: no database and no authentication. It lives in `lib/data` as a
-  typed module rather than a loose JSON file so the server and client share one contract.
-- Images and video are static assets served by the client (`apps/client/public`); the API returns
-  their paths, not their bytes.
-- Single-page design, so no router. Navigation is in-page anchors; a router would be added the
-  moment a second page exists.
-- Highlighted words inside a sentence are modelled as `text` + `highlights: string[]` and rendered
-  by `HighlightedText`, keeping markup out of the API payload.
-- The 10 s cache window means each section endpoint is fetched once per page load; a `refetch`
-  refreshes the cache but only re-renders the component that requested it, which is sufficient here
-  because each endpoint has a single consumer.
-
-## Future improvements
-
-- Unit tests for the cache/`useApi` behaviour and the controllers (React Testing Library + `node:test`)
-- Move content to a CMS or database behind the same endpoints, plus response caching headers
-- Server-side rendering or prerendering for SEO and first-paint
-- Skeleton-free fast path by inlining the first payload into `index.html`
-- Request-level retry with backoff, and a shared subscription so `refetch` updates every consumer
-- Playwright visual regression against the Figma reference
