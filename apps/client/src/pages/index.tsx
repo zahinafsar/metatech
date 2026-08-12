@@ -36,6 +36,7 @@ import {
   PillarTitle,
   Section,
   SectionBody,
+  Separator,
   SectionInner,
   SectionSplit,
   SectionTitle,
@@ -57,6 +58,7 @@ import {
   TechGrid,
   type TechGridItem,
 } from 'metatech-ui';
+import { useEffect, useRef, useState } from 'react';
 
 const solutionCards = [
   {
@@ -272,13 +274,38 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { label: 'Facebook', href: 'https://facebook.com' },
   { label: 'Linkedin', href: 'https://linkedin.com' },
-  { label: 'Instagram', href: 'https://instagram.com' },
   { label: 'Youtube', href: 'https://youtube.com' },
+  { label: 'Instagram', href: 'https://instagram.com' },
+  { label: 'Facebook', href: 'https://facebook.com' },
 ];
 
 export function App() {
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const [isStuck, setIsStuck] = useState(false);
+
+  useEffect(() => {
+    const element = stickyRef.current;
+
+    if (!element) {
+      return;
+    }
+
+    const update = () => {
+      const offset = parseFloat(getComputedStyle(element).top) || 0;
+      setIsStuck(element.getBoundingClientRect().top <= offset + 1);
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar>
@@ -347,7 +374,7 @@ export function App() {
           className="px-6 pt-[168px] pb-[50px] md:pb-[168px] md:pt-[212px] lg:px-[50px]"
         >
           <div className="mx-auto flex w-full max-w-[1340px] flex-col items-start gap-5 lg:flex-row lg:items-center lg:gap-[180px]">
-            <h1 className="max-w-[664px] font-display text-[48px] leading-[1] font-extrabold capitalize tracking-[-2.4px] lg:text-[72px] lg:leading-[72px] lg:tracking-[-3.6px]">
+            <h1 className="max-w-[664px] font-display text-[48px] leading-[1] font-extrabold capitalize tracking-[-1px] lg:text-[72px] lg:leading-[72px] lg:tracking-[-0.5px]">
               Building <span className="text-brand-green">Intelligence to Power</span> Scalable
               Innovation
             </h1>
@@ -398,11 +425,15 @@ export function App() {
         </SectionInner>
       </Section>
 
-      <Section className="bg-muted py-[50px]">
-        <Tabs defaultValue={pillars[0].value}>
-          <SectionInner className="flex">
+      <Tabs defaultValue={pillars[0].value} className="bg-muted pt-[10px]">
+        <div
+          ref={stickyRef}
+          data-stuck={isStuck}
+          className="group/sticky sticky top-0 z-30 mb-7 pt-4 md:pt-6"
+        >
+          <SectionInner className="flex px-0 md:px-5">
             <span aria-hidden className="hidden w-[455px] shrink-0 xl:block" />
-            <TabsList className="mx-auto w-full min-w-0 overflow-x-auto md:max-w-[612px] xl:mx-0">
+            <TabsList className="px-5 mx-auto w-full min-w-0 overflow-x-auto transition-shadow duration-300 ease-out md:max-w-[612px] md:group-data-[stuck=true]/sticky:shadow-[0_12px_30px_rgba(0,0,0,0.14)] xl:mx-0">
               {pillars.map((pillar) => (
                 <TabsTrigger key={pillar.value} value={pillar.value}>
                   {pillar.tab}
@@ -410,89 +441,88 @@ export function App() {
               ))}
             </TabsList>
           </SectionInner>
+        </div>
 
-          <TabsPanels>
-            {pillars.map((pillar) => (
-              <TabsPanel key={pillar.value} value={pillar.value}>
-                <SectionInner className="pb-[50px] pt-[100px] md:py-[50px] md:pt-[100px]">
-                  <PillarPanel className="xl:gap-[290px]">
-                    <PillarNumber>{pillar.number}</PillarNumber>
-                    <PillarContent>
-                      <PillarTitle>{pillar.title}</PillarTitle>
-                      <PillarBody>{pillar.body}</PillarBody>
-                      <Button variant="ink">Book a consultation</Button>
-                    </PillarContent>
-                  </PillarPanel>
-                </SectionInner>
-              </TabsPanel>
-            ))}
-          </TabsPanels>
-        </Tabs>
-      </Section>
+        <TabsPanels>
+          {pillars.map((pillar) => (
+            <TabsPanel key={pillar.value} value={pillar.value}>
+              <SectionInner className="pb-[50px] pt-[100px] md:py-[50px] md:pt-[50px]">
+                <PillarPanel className="xl:gap-[290px]">
+                  <PillarNumber>{pillar.number}</PillarNumber>
+                  <PillarContent>
+                    <PillarTitle>{pillar.title}</PillarTitle>
+                    <PillarBody>{pillar.body}</PillarBody>
+                    <Button variant="ink">Book a consultation</Button>
+                  </PillarContent>
+                </PillarPanel>
+              </SectionInner>
+            </TabsPanel>
+          ))}
+        </TabsPanels>
 
-      <Section className="bg-muted pb-[50px]">
-        <SectionInner>
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:overflow-visible [&::-webkit-scrollbar]:hidden">
-            {solutionHighlights.map((highlight) => (
-              <Card
-                key={highlight.title}
-                className="group/card relative w-full min-h-[350px] md:min-h-[450px] shrink-0 snap-start justify-between overflow-hidden border-deep bg-deep text-deep-foreground transition-colors duration-300 ease-out md:w-[60%] md:justify-center md:border-border md:bg-card md:text-card-foreground md:hover:justify-start md:hover:border-deep md:hover:bg-deep md:hover:text-deep-foreground lg:w-auto lg:shrink"
-              >
-                <CardTitle className="text-brand-green transition-colors duration-300 ease-out md:text-center md:text-inherit md:group-hover/card:text-left md:group-hover/card:text-brand-green">
-                  {highlight.title}
-                </CardTitle>
-                <CardDescription className="text-inherit transition-opacity duration-300 ease-out md:absolute md:inset-x-[30px] md:bottom-[30px] md:opacity-0 md:group-hover/card:opacity-100">
-                  {highlight.body}
-                </CardDescription>
-              </Card>
-            ))}
-          </div>
-        </SectionInner>
-      </Section>
-
-      <Section id="showcase" className="bg-brand-green-mid">
-        <SectionInner>
-          <Showcase>
-            <ShowcaseContent>
-              <ShowcaseLogo src="/brand/amicredible-logo.png" alt="AmiCredible" />
-              <div className="flex flex-col gap-[30px] md:gap-[50px] mt-20 md:mt-0">
-                <div className="flex flex-col gap-[15px] max-w-[548px]">
-                  <ShowcaseTitle>An AI-powered credibility checking platform</ShowcaseTitle>
-                  <ShowcaseBody>
-                    that helps users verify claims, analyze sources, and make informed decisions
-                    with Quick Check, Deep Check, and Image Check features.
-                  </ShowcaseBody>
+        <Section className="bg-muted pb-[50px]">
+          <SectionInner>
+            <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:overflow-visible [&::-webkit-scrollbar]:hidden">
+              {solutionHighlights.map((highlight) => (
+                <Card
+                  key={highlight.title}
+                  className="group/card relative w-full min-h-[350px] md:min-h-[450px] shrink-0 snap-start justify-between overflow-hidden border-deep bg-deep text-deep-foreground transition-colors duration-300 ease-out md:w-[60%] md:justify-center md:border-border md:bg-card md:text-card-foreground md:hover:justify-start md:hover:border-deep md:hover:bg-deep md:hover:text-deep-foreground lg:w-auto lg:shrink"
+                >
+                  <CardTitle className="text-brand-green transition-colors duration-300 ease-out md:text-center md:text-inherit md:group-hover/card:text-left md:group-hover/card:text-brand-green">
+                    {highlight.title}
+                  </CardTitle>
+                  <CardDescription className="text-inherit transition-opacity duration-300 ease-out md:absolute md:inset-x-[30px] md:bottom-[30px] md:opacity-0 md:group-hover/card:opacity-100">
+                    {highlight.body}
+                  </CardDescription>
+                </Card>
+              ))}
+            </div>
+          </SectionInner>
+        </Section>
+        <Section id="showcase" className="bg-brand-green-mid">
+          <SectionInner>
+            <Showcase>
+              <ShowcaseContent>
+                <ShowcaseLogo src="/brand/amicredible-logo.png" alt="AmiCredible" />
+                <div className="flex flex-col gap-[30px] md:gap-[50px] mt-20 md:mt-0">
+                  <div className="flex flex-col gap-[15px] max-w-[548px]">
+                    <ShowcaseTitle>An AI-powered credibility checking platform</ShowcaseTitle>
+                    <ShowcaseBody>
+                      that helps users verify claims, analyze sources, and make informed decisions
+                      with Quick Check, Deep Check, and Image Check features.
+                    </ShowcaseBody>
+                  </div>
+                  <div>
+                    <Button variant="outline">
+                      Explore more
+                      <ArrowRightIcon />
+                    </Button>
+                  </div>
                 </div>
-                <div>
-                  <Button variant="outline">
-                    Explore more
-                    <ArrowRightIcon />
-                  </Button>
-                </div>
-              </div>
-            </ShowcaseContent>
-            <ShowcaseMedia>
-              <Carousel loop autoplayDelay={5000} className="size-full">
-                <CarouselContent className="ml-0">
-                  {showcaseSlides.map((slide, index) => (
-                    <CarouselItem key={index} className="pl-0">
-                      <div className="relative">
-                        <img
-                          src={slide.src}
-                          alt={slide.alt}
-                          className="h-[380px] w-full rounded-[20px] object-cover sm:h-[380px] lg:h-[640px]"
-                        />
-                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[129px] rounded-b-[20px] bg-gradient-to-t from-black/70 to-transparent" />
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselDots className="absolute bottom-[24px] left-[24px] lg:bottom-[34px] lg:left-[34px]" />
-              </Carousel>
-            </ShowcaseMedia>
-          </Showcase>
-        </SectionInner>
-      </Section>
+              </ShowcaseContent>
+              <ShowcaseMedia>
+                <Carousel loop autoplayDelay={5000} className="size-full">
+                  <CarouselContent className="ml-0">
+                    {showcaseSlides.map((slide, index) => (
+                      <CarouselItem key={index} className="pl-0">
+                        <div className="relative">
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="h-[380px] w-full rounded-[20px] object-cover sm:h-[380px] lg:h-[640px]"
+                          />
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[129px] rounded-b-[20px] bg-gradient-to-t from-black/70 to-transparent" />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselDots className="absolute bottom-[24px] left-[24px] lg:bottom-[34px] lg:left-[34px]" />
+                </Carousel>
+              </ShowcaseMedia>
+            </Showcase>
+          </SectionInner>
+        </Section>
+      </Tabs>
 
       <Section className="bg-background pb-[80px] pt-[100px] lg:pt-[150px]">
         <SectionInner>
@@ -515,24 +545,26 @@ export function App() {
 
       <SiteFooter id="contact">
         <SiteFooterTop>
-          <p className="w-[323px]">
-            @2022-2026 <span className="text-brand-green">MetaTech LLC </span>
-            {'// All Rights Reserved'}
-          </p>
-          <div className="flex items-center gap-[30px]">
+          <div className="flex flex-col gap-5 lg:order-2 lg:flex-row lg:items-center lg:gap-[30px]">
             {footerLinks.map((link) => (
               <SiteFooterLink key={link.href} href={link.href}>
                 {link.label}
               </SiteFooterLink>
             ))}
           </div>
-          <div className="flex flex-wrap items-center gap-[30px]">
+          <Separator className="w-5 bg-white/60 lg:hidden" />
+          <div className="flex flex-col gap-5 lg:order-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-[30px]">
             {socialLinks.map((link) => (
               <SiteFooterLink key={link.href} href={link.href} target="_blank" rel="noreferrer">
                 {link.label}
               </SiteFooterLink>
             ))}
           </div>
+          <Separator className="w-5 bg-white/60 lg:hidden" />
+          <p className="lg:order-1 text-sm lg:w-[323px]">
+            @2022-2026 <span className="text-brand-green">MetaTech LLC </span>
+            {'// All Rights Reserved'}
+          </p>
         </SiteFooterTop>
         <SiteFooterWordmark src="/brand/footer-wordmark.svg" alt="MetaTech" />
       </SiteFooter>

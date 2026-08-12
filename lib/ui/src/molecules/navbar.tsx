@@ -7,7 +7,7 @@ function Navbar({ className, ...props }: React.ComponentProps<'header'>) {
   return (
     <header
       data-slot="navbar"
-      className={cn('sticky top-0 z-50 h-0 w-full p-0', className)}
+      className={cn('relative z-50 h-0 w-full p-0', className)}
       {...props}
     />
   );
