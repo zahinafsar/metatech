@@ -36,6 +36,10 @@ function ShowcaseLogo({
       data-slot="showcase-logo"
       src={src}
       alt={alt}
+      loading="lazy"
+      decoding="async"
+      width={279}
+      height={40}
       className={cn('h-10 w-[209px] md:w-[279px] object-contain object-left', className)}
       {...props}
     />

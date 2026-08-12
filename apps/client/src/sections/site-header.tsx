@@ -73,7 +73,12 @@ export function SiteHeader() {
           <NavbarBrand href={data.brand.href} aria-label={`${data.brand.label} home`}>
             <img
               src={data.brand.logoSrc}
-              alt={data.brand.label}
+              alt={`${data.brand.label} logo`}
+              width={155}
+              height={25}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="h-5 w-[126px] md:h-[25px] md:w-[155px]"
             />
           </NavbarBrand>

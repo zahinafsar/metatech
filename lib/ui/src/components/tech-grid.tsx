@@ -30,7 +30,9 @@ function TechGridTrack({
         <TechTile key={item.name} style={{ width: item.cell }} className="shrink-0">
           <TechTileImage
             src={item.src}
-            alt={hidden ? '' : item.name}
+            alt={hidden ? '' : `${item.name} logo`}
+            width={item.width}
+            height={item.height}
             style={{ width: item.width, height: item.height }}
             className="max-w-[85%]"
           />

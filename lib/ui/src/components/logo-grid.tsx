@@ -25,7 +25,9 @@ function LogoGrid({
         <LogoTile key={`${item.name}-${index}`} className="-mr-px -mb-px">
           <LogoTileImage
             src={item.src}
-            alt={item.name}
+            alt={`${item.name} logo`}
+            width={item.width}
+            height={item.height}
             style={{ width: item.width, height: item.height }}
           />
         </LogoTile>

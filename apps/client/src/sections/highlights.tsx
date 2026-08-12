@@ -31,7 +31,7 @@ export function Highlights() {
   }
 
   return (
-    <Section className="bg-muted pb-[50px]">
+    <Section aria-label="How we deliver" className="bg-muted pb-[50px]">
       <SectionInner>
         <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:overflow-visible [&::-webkit-scrollbar]:hidden">
           {isLoading || !data ? (

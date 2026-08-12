@@ -50,6 +50,8 @@ function SiteFooterWordmark({
         data-slot="site-footer-wordmark"
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         className={cn('w-full select-none', className)}
         {...props}
       />

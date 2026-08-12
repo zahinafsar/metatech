@@ -25,6 +25,7 @@ function TechTileImage({
       data-slot="tech-tile-image"
       alt={alt}
       loading="lazy"
+      decoding="async"
       className={cn('max-w-none object-contain', className)}
       {...props}
     />

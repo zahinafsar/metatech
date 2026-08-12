@@ -81,6 +81,9 @@ export function Showcase() {
                             src={slide.src}
                             alt={slide.alt}
                             loading="lazy"
+                            decoding="async"
+                            width={1000}
+                            height={640}
                             className="h-[380px] w-full rounded-[20px] object-cover sm:h-[380px] lg:h-[640px]"
                           />
                           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[129px] rounded-b-[20px] bg-gradient-to-t from-black/70 to-transparent" />

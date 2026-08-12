@@ -15,9 +15,9 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<'p'>) {
+function CardTitle({ className, ...props }: React.ComponentProps<'h3'>) {
   return (
-    <p
+    <h3
       data-slot="card-title"
       className={cn(
         'font-display text-[24px] md:text-[32px] leading-[42px] font-extrabold tracking-[-1.6px]',

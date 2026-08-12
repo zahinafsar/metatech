@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://metatech.zahinafsar.com/sitemap.xml

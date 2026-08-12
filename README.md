@@ -88,11 +88,11 @@ imports it and serves it; the client imports only the types.
 
 `lib/state` is a small, app-agnostic fetching layer:
 
-- `<DataProvider baseUrl staleTime>` holds a `Map` cache in a ref and exposes `request(path)`
-- a response younger than `staleTime` (**10 s**) is served from cache with no network call
+- `<DataProvider staleTime>` holds the cache in localstorage
+- a response younger than `staleTime` (**60 s**) is served from cache with no network call
 - concurrent calls for the same path share one in-flight promise
 - non-2xx responses are parsed into an `ApiError` carrying the server's message and status
-- `useApi<T>(path)` wraps that with `{ data, error, isLoading, refetch }`
+- `useApi<T>(path)` wraps that with `{ data, error, isLoading }`
 
 `apps/client/src/data` wraps `useApi` once per endpoint, so a section just calls `useHeroState()`
 and never touches URLs or generics. Each section renders its own layout-shaped skeleton while

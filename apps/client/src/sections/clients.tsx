@@ -26,7 +26,7 @@ export function Clients() {
   }
 
   return (
-    <Section className="px-5 pt-[100px] pb-5">
+    <Section aria-label="Clients and technology partners" className="px-5 pt-[100px] pb-5">
       <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-10 lg:flex-row">
         {isLoading || !data ? (
           <ClientsSkeleton />

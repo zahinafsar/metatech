@@ -25,6 +25,7 @@ function LogoTileImage({
       data-slot="logo-tile-image"
       alt={alt}
       loading="lazy"
+      decoding="async"
       className={cn('max-h-[60%] max-w-full object-contain', className)}
       {...props}
     />

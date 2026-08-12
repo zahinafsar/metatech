@@ -242,7 +242,9 @@ function NavbarPanelCard({
       <img
         src={imageSrc}
         alt={imageAlt}
+        aria-hidden={imageAlt === ''}
         loading="lazy"
+        decoding="async"
         className="absolute inset-0 size-full scale-[1.03] object-cover opacity-0 transition-opacity duration-300 ease-out group-hover/navbar-card:opacity-100"
       />
       <span className="absolute inset-0 bg-black/0 transition-colors duration-300 ease-out group-hover/navbar-card:bg-black/25" />

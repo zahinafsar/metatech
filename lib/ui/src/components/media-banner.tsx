@@ -12,6 +12,7 @@ function MediaBanner({
   maskSrc,
   shapeSrc,
   wordmarkSrc,
+  wordmarkAlt = '',
   videoSrc,
   ...props
 }: React.ComponentProps<'div'> & {
@@ -20,6 +21,7 @@ function MediaBanner({
   maskSrc: string;
   shapeSrc: string;
   wordmarkSrc: string;
+  wordmarkAlt?: string;
   videoSrc: string;
 }) {
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -73,7 +75,16 @@ function MediaBanner({
             } as React.CSSProperties
           }
         >
-          <img src={imageSrc} alt={imageAlt} className="size-full object-cover" />
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            width={626}
+            height={351}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="size-full object-cover"
+          />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-30 md:hidden"
@@ -84,10 +95,17 @@ function MediaBanner({
           <img
             src={shapeSrc}
             alt=""
+            aria-hidden
+            loading="lazy"
+            decoding="async"
             className="pointer-events-none absolute inset-0 hidden size-full md:block"
           />
           <img
             src={wordmarkSrc}
+            alt={wordmarkAlt}
+            aria-hidden={wordmarkAlt === ''}
+            loading="lazy"
+            decoding="async"
             className="pointer-events-none absolute bottom-0 left-1/2 w-[71.5%] -translate-x-1/2"
           />
         </div>
