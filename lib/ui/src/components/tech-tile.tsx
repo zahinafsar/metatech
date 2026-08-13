@@ -7,7 +7,7 @@ function TechTile({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="tech-tile"
       className={cn(
-        'relative flex h-[150px] shrink-0 items-center justify-center overflow-hidden rounded-tile border-[0.5px] border-hairline-light bg-secondary',
+        'relative flex h-[100px] shrink-0 items-center justify-center overflow-hidden rounded-tile border-[0.5px] border-hairline-light bg-secondary md:h-[150px]',
         className,
       )}
       {...props}

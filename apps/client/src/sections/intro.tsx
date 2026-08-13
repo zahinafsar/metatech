@@ -31,7 +31,7 @@ export function Intro() {
           ) : (
             <>
               <Eyebrow>{data.eyebrow}</Eyebrow>
-              <p className="max-w-[680px] font-display text-[21px] md:text-[32px] leading-[27px] md:leading-[39px] tracking-[-0.96px]">
+              <p className="max-w-[680px] font-display text-[21px] md:text-[32px] leading-[27px] md:leading-[39px] tracking-[-0.64px] md:tracking-[-0.96px]">
                 <span className="font-extrabold">{data.lead}</span>
                 {data.body}
               </p>

@@ -52,7 +52,7 @@ function PillarBody({ className, ...props }: React.ComponentProps<'p'>) {
   return (
     <p
       data-slot="pillar-body"
-      className={cn('text-lg leading-[27px] tracking-[-0.54px]', className)}
+      className={cn('text-lg leading-[27px] tracking-[-0.32px] md:tracking-[-0.54px]', className)}
       {...props}
     />
   );
