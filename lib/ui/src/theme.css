@@ -80,11 +80,11 @@
 
 @keyframes marquee {
   from {
-    translate: 0 0;
+    transform: translateX(0);
   }
 
   to {
-    translate: calc(-100% - 10px) 0;
+    transform: translateX(-50%);
   }
 }
 

@@ -14,19 +14,18 @@ import {
   TabsPanels,
   TabsTrigger,
 } from 'metatech-ui';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 
 import { usePillarsState } from '../data';
 
 const useStickyState = () => {
-  const stickyRef = useRef<HTMLDivElement>(null);
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
   const [isStuck, setIsStuck] = useState(false);
 
   useEffect(() => {
-    const element = stickyRef.current;
-
     if (!element) {
+      setIsStuck(false);
       return;
     }
 
@@ -43,9 +42,9 @@ const useStickyState = () => {
       window.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
     };
-  }, []);
+  }, [element]);
 
-  return { stickyRef, isStuck };
+  return { stickyRef: setElement, isStuck };
 };
 
 function PillarsSkeleton() {

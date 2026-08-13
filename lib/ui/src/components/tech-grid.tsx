@@ -11,33 +11,38 @@ type TechGridItem = {
   height: number;
 };
 
-function TechGridTrack({
-  row,
-  reverse,
-  hidden,
-}: {
-  row: TechGridItem[];
-  reverse: boolean;
-  hidden?: boolean;
-}) {
+function TechGridRow({ row, reverse }: { row: TechGridItem[]; reverse: boolean }) {
+  const sequence = [...row, ...row];
+  const items = [...sequence, ...sequence];
+
   return (
-    <div
-      aria-hidden={hidden}
-      style={{ animationDirection: reverse ? 'reverse' : 'normal' }}
-      className="flex w-max shrink-0 gap-[10px] animate-marquee group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none"
-    >
-      {row.map((item) => (
-        <TechTile key={item.name} style={{ width: item.cell }} className="shrink-0">
-          <TechTileImage
-            src={item.src}
-            alt={hidden ? '' : `${item.name} logo`}
-            width={item.width}
-            height={item.height}
-            style={{ width: item.width, height: item.height }}
-            className="max-w-[85%]"
-          />
-        </TechTile>
-      ))}
+    <div data-slot="tech-grid-row" className="w-full overflow-hidden">
+      <div
+        style={{ animationDirection: reverse ? 'reverse' : 'normal' }}
+        className="flex w-max animate-marquee group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none"
+      >
+        {items.map((item, itemIndex) => {
+          const hidden = itemIndex >= row.length;
+
+          return (
+            <TechTile
+              key={`${itemIndex}-${item.name}`}
+              aria-hidden={hidden}
+              style={{ width: item.cell }}
+              className="mr-[10px] shrink-0"
+            >
+              <TechTileImage
+                src={item.src}
+                alt={hidden ? '' : `${item.name} logo`}
+                width={item.width}
+                height={item.height}
+                style={{ width: item.width, height: item.height }}
+                className="max-w-[85%]"
+              />
+            </TechTile>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -54,10 +59,7 @@ function TechGrid({
       {...props}
     >
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} data-slot="tech-grid-row" className="flex gap-[10px] overflow-hidden">
-          <TechGridTrack row={row} reverse={rowIndex % 2 === 1} />
-          <TechGridTrack row={row} reverse={rowIndex % 2 === 1} hidden />
-        </div>
+        <TechGridRow key={rowIndex} row={row} reverse={rowIndex % 2 === 1} />
       ))}
     </div>
   );
